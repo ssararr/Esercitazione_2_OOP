@@ -1,0 +1,3 @@
+/home/appuser/Data/esercitazioni/esercitazione2/1803/complex/Debug/CMakeFiles/main.dir
+/home/appuser/Data/esercitazioni/esercitazione2/1803/complex/Debug/CMakeFiles/edit_cache.dir
+/home/appuser/Data/esercitazioni/esercitazione2/1803/complex/Debug/CMakeFiles/rebuild_cache.dir
