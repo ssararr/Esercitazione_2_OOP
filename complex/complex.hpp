@@ -81,25 +81,27 @@ public:
         );
     }
     
-
-    
-
-    //overload degli operatori tra tipi (float, double) diversi (GUARDARE)
-    template <typename U>
-    auto operator+(const complex<U>& other) const {
-        using ResultType = decltype(T{} + U{});  // Determina il tipo più preciso tra T e U
-        return complex<ResultType>(
-            p_re + static_cast<ResultType>(other.p_re),
-            p_imm + static_cast<ResultType>(other.p_imm)
-        );
+   
+	//overload degli operatori tra tipi diversi 
+	
+	//overload somma di scalare + complesso
+    template <typename R>
+    friend complex<R> 
+	operator+(const R& c, const complex<R>& d) 
+	{
+        return complex<R>(c + d.p_re, d.p_imm);
+    }
+	
+	
+	//overload moltiplicazione complesso * reale
+    complex operator*(const T& scal) const {
+        return complex(p_re * scal, p_imm * scal);
     }
 
-    template <typename U>
-    auto operator*(const complex<U>& other) const {
-        using ResultType = decltype(T{} + U{});  // Determina il tipo più preciso tra T e U
-        return complex<ResultType>(
-            p_re * static_cast<ResultType>(other.p_re) - p_imm * static_cast<ResultType>(other.p_imm),
-            p_re * static_cast<ResultType>(other.p_imm) + p_imm * static_cast<ResultType>(other.p_re)
-        );
+    //overload moltiplicazione reale * complesso 
+    template <typename R>
+    friend complex<R> operator*(const R& scal, const complex<R>& c) {
+        return complex<R>(scal * c.p_re, scal * c.p_imm);
     }
+
 };
